@@ -1,11 +1,12 @@
 .body-font {
   font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #1d1d1b;
+  color: #5f5f58;
   font-size: 14px;
 }
 .header-font {
   font-weight: 700;
   line-height: 1.2;
+  color: #1d1d1b;
 }
 /* Utilities */
 .sr-only {
@@ -37,7 +38,7 @@ html,
 }
 body {
   font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #1d1d1b;
+  color: #5f5f58;
   font-size: 14px;
   background-color: #fff;
   overflow-x: hidden;
@@ -52,7 +53,7 @@ button,
 select,
 textarea {
   font-family: Cabin, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #1d1d1b;
+  color: #5f5f58;
   font-size: 14px;
 }
 /* General Styles */
@@ -63,6 +64,57 @@ a:hover,
 a:focus {
   color: #ec008c;
   text-decoration: none;
+}
+.btn {
+  background-color: #1d1d1b;
+  border-color: #1d1d1b;
+  color: #ffffff;
+  transition: background-color 0.2s ease-in 0s;
+  background-image: none;
+  text-shadow: none;
+}
+.btn:hover,
+.btn:focus {
+  color: #ffffff;
+  background-color: #0c0c08;
+  border-color: #0c0c08;
+}
+.btn.btn-primary {
+  background-color: #ec008c;
+  border-color: #ec008c;
+  color: #ffffff;
+  transition: background-color 0.2s ease-in 0s;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  color: #ffffff;
+  background-color: #c80077;
+  border-color: #c80077;
+}
+.btn.btn-success {
+  background-color: #2db55d;
+  border-color: #2db55d;
+  color: #ffffff;
+  transition: background-color 0.2s ease-in 0s;
+}
+.btn.btn-success:hover,
+.btn.btn-success:focus {
+  color: #ffffff;
+  background-color: #18a74a;
+  border-color: #18a74a;
+}
+.pill {
+  background-color: #7d1a5a;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1d1d1b;
 }
 /* Header */
 .account-masthead {
@@ -146,6 +198,122 @@ a:focus {
 .masthead .site-search {
   display: none;
 }
+/* toolbar */
+.toolbar {
+  background-color: #7d1a5a;
+  margin: 0 -9999rem;
+  padding: 15px 9999rem;
+  color: #ffffff;
+}
+.toolbar .breadcrumb > li {
+  text-shadow: none;
+}
+.toolbar .breadcrumb > li a {
+  color: #ffffff;
+}
+/* content */
+[role="main"] .wrapper {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+  margin: 0;
+  background-position: -7px top;
+}
+[role="main"] .wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 9600px;
+  right: 100%;
+  background-color: #f6f5f7;
+  display: block;
+}
+[role="main"] .wrapper.no-nav:before {
+  display: none;
+}
+[role="main"] .wrapper.no-nav .module-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+[role="main"] .wrapper .module-content.page-header {
+  background-color: #f6f5f7;
+  border-radius: 0;
+  margin-left: -9999rem;
+  padding-left: 9999rem;
+  margin-right: -9999rem;
+  padding-right: 9999rem;
+}
+[role="main"] .wrapper .module-content.page-header .content_action {
+  margin-right: 0;
+}
+[role="main"] .wrapper .primary {
+  width: 696px;
+}
+[role="main"] .wrapper .primary .module-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+[role="main"] .wrapper .primary .module-content.page-header {
+  margin-left: -26px;
+  padding-left: 1px;
+  padding-right: 9999rem;
+}
+[role="main"] .wrapper .secondary {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+[role="main"] .wrapper .secondary .module-heading {
+  background-color: transparent;
+}
+[role="main"] .wrapper .secondary .nav-facet .nav-item > a:hover:after {
+  background-image: none;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  content: "\F055";
+}
+[role="main"] .wrapper .secondary .nav > li > a {
+  color: #5f5f58;
+}
+[role="main"] .wrapper .secondary .nav > li > a:hover,
+[role="main"] .wrapper .secondary .nav > li > a:focus {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+[role="main"] .wrapper .secondary .nav-item.active > a,
+[role="main"] .wrapper .secondary .nav-aside li.active a,
+[role="main"] .wrapper .secondary .nav-facet .nav-item.active > a,
+[role="main"] .wrapper .secondary .nav-facet .nav-aside li.active a,
+[role="main"] .wrapper .secondary .nav-item.active > a:hover,
+[role="main"] .wrapper .secondary .nav-aside li.active a:hover {
+  background-color: #ffffff;
+  color: #5f5f58;
+}
+[role="main"] .wrapper .secondary .nav-item.active > a:before,
+[role="main"] .wrapper .secondary .nav-aside li.active a:before,
+[role="main"] .wrapper .secondary .nav-facet .nav-item.active > a:before,
+[role="main"] .wrapper .secondary .nav-facet .nav-aside li.active a:before,
+[role="main"] .wrapper .secondary .nav-item.active > a:hover:before,
+[role="main"] .wrapper .secondary .nav-aside li.active a:hover:before {
+  background-image: none;
+  background-color: #7d1a5a;
+  left: -6px;
+  right: auto;
+}
+[role="main"] .wrapper .secondary .nav-facet .nav-item.active > a:after,
+[role="main"] .wrapper .secondary .nav-facet .nav-aside li.active a:after {
+  background-image: none;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  content: "\F057";
+}
+[role="main"] .wrapper .module .read-more {
+  color: #5f5f58;
+  font-weight: normal;
+  font-size: 12px;
+}
 /* media grid */
 .media-grid {
   background: none;
@@ -177,17 +345,19 @@ a:focus {
   overflow: hidden;
   text-transform: uppercase;
   font-size: 15px;
+  color: #7d1a5a;
 }
 .media-grid .media-item a p {
   display: none;
 }
 /* footer */
 .site-footer {
-  color: #1d1d1b;
+  color: #5f5f58;
   padding: 30px 0;
+  border-top: solid 1px #dbdae2;
 }
 .site-footer a {
-  color: #1d1d1b;
+  color: #5f5f58;
 }
 .site-footer .footer-links ul {
   width: auto;
@@ -198,7 +368,7 @@ a:focus {
   vertical-align: middle;
 }
 .site-footer .footer-links ul li a {
-  border-right: solid 1px #1d1d1b;
+  border-right: solid 1px #5f5f58;
   padding-right: 5px;
   margin-right: 4px;
 }
@@ -249,6 +419,7 @@ a:focus {
   border-bottom: solid 2px #ec008c;
   text-transform: uppercase;
   margin-bottom: 10px;
+  color: #ffffff;
 }
 .homepage .welcome p {
   font-size: 20px;
@@ -263,10 +434,13 @@ a:focus {
 .homepage .twitter {
   background-color: #dbdae2;
 }
+.homepage .twitter .carousel {
+  margin-bottom: 0;
+}
 .homepage .twitter ul.carousel-inner {
   padding-top: 35px;
   margin: 0;
-  height: 71px;
+  height: 70px;
 }
 .homepage .twitter .user {
   float: left;
@@ -274,7 +448,7 @@ a:focus {
   width: 230px;
 }
 .homepage .twitter .user a {
-  color: #1d1d1b;
+  color: #5f5f58;
 }
 .homepage .twitter .user span {
   display: block;

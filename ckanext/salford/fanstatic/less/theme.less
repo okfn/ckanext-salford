@@ -3,10 +3,12 @@
 @black: #1d1d1b;
 @white: #fff;
 @footer-bg: @white;
-@text: @black;
+@text: lighten(@black, 25%);
 @primary: #7d1a5a;
 @secondary: #dbdae2;
 @accent: #ec008c;
+@light: #F6F5F7;
+@success:#2DB55D;
 
 
 //Mixins
@@ -33,6 +35,7 @@
 .header-font {
   font-weight:700;
   line-height:1.2;
+  color:@black;
 }
 
 
@@ -99,6 +102,31 @@ a {
     color: @accent;
     text-decoration:none;
   }
+}
+
+
+.btn {
+  .button-colour(@black);
+  background-image:none;
+  text-shadow:none;
+  
+  &.btn-primary {
+    .button-colour(@accent);
+  }
+  
+  &.btn-success {
+    .button-colour(@success);
+  }
+}
+
+
+.pill {
+  background-color: @primary;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  .header-font;
 }
 
 
@@ -210,6 +238,149 @@ a {
 }
 
 
+/* toolbar */
+.toolbar {
+  background-color:@primary;
+  margin: 0 -9999rem;
+  padding: 15px 9999rem;
+  color:@white;
+  
+  .breadcrumb > li {
+    text-shadow:none;
+    
+    a {
+      color:@white;
+    }
+  }
+}
+
+
+/* content */
+
+[role="main"] {
+  .wrapper {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    margin:0;
+    background-position:-7px top;
+      
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 9600px;
+      right: 100%;
+      background-color: @light;
+      display:block;
+    }
+    
+    &.no-nav {
+      &:before {
+        display:none;
+      }
+      
+      .module-content {
+        padding-left:0;
+        padding-right:0;
+      }
+    }
+    
+    
+    .module-content {
+      &.page-header {
+        background-color: @light;
+        border-radius: 0;
+        margin-left:-9999rem;
+        padding-left:9999rem;
+        margin-right:-9999rem;
+        padding-right:9999rem;
+        
+        .content_action {
+          margin-right: 0;
+        }
+      }
+    }
+    
+    .primary {
+      width: 696px;
+      
+      .module-content {
+        padding-left:0;
+        padding-right:0;
+        
+        &.page-header {
+          margin-left:-26px;
+          padding-left:1px;
+          padding-right:9999rem;
+        }
+      }
+    }
+    
+    .secondary {
+      padding-top:20px;
+      padding-bottom:10px;
+    
+      .module-heading {
+        background-color:transparent;
+      }
+      
+      .nav-facet .nav-item > a:hover:after {
+        background-image:none;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        content: "\F055";
+      }
+      
+      .nav > li > a {
+        color:@text;
+        
+        &:hover,
+        &:focus {
+          background-color: rgba(0,0,0,0.04);
+        }
+      }
+      
+      .nav-item.active > a,
+      .nav-aside li.active a,
+      .nav-facet .nav-item.active > a,
+      .nav-facet .nav-aside li.active a,
+      .nav-item.active > a:hover,
+      .nav-aside li.active a:hover, {
+        background-color: @white;
+        color: @text;
+        
+        &:before {
+          background-image:none;
+          background-color:@primary;
+          left:-6px;
+          right:auto;
+        }
+      }
+      .nav-facet .nav-item.active > a,
+      .nav-facet .nav-aside li.active a {
+        &:after {
+          background-image:none;
+          font-family: FontAwesome;
+          font-style: normal;
+          font-weight: normal;
+          content: "\F057";
+        }
+      }
+    }
+    
+    .module .read-more {
+      color: @text;
+      font-weight: normal;
+      font-size:12px;
+    }
+  }
+}
+
+
 /* media grid */
 .media-grid {
   background: none;
@@ -242,6 +413,7 @@ a {
         overflow:hidden;
         text-transform:uppercase;
         font-size:15px;
+        color:@primary;
       }
       
       p {
@@ -257,6 +429,7 @@ a {
 .site-footer {
   color:@text;
   padding:30px 0;
+  border-top:solid 1px @secondary;
   
   a {
     color:@text;
@@ -334,6 +507,7 @@ a {
       border-bottom:solid 2px @accent;
       text-transform:uppercase;
       margin-bottom:10px;
+      color:@white;
     }
     
     p {
@@ -352,10 +526,13 @@ a {
   .twitter {
     background-color:@secondary;
     
+    .carousel {
+      margin-bottom:0;
+    }
     ul.carousel-inner {
       padding-top:35px;
       margin:0;
-      height:71px;
+      height:70px;
     }
 
     .user {
