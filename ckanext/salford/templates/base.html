@@ -1,0 +1,12 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  {% resource 'salford/css/theme.css' %}
+  <link href='//fonts.googleapis.com/css?family=Cabin:400,700,400italic' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% resource 'salford/bower_components/twitter-fetcher/js/twitterFetcher_min.js' %}
+{% endblock %}

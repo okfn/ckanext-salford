@@ -1,0 +1,53 @@
+{% ckan_extends %}
+
+{% block content %}
+  <div class="homepage">
+    <div class="container">
+      {{ self.flash() }}
+    </div>
+    
+    <header class="welcome">
+      <div class="container">
+        {% if intro %}
+          {{ h.render_markdown(intro) }}
+        {% else %}
+          <h1 class="page-heading">{{ _("Welcome To ") }}{{ g.site_title }}</h1>
+          <p>
+            {% trans %}This is a nice introductory paragraph about CKAN or the site
+            in general. We don't have any copy to go here yet but soon we will.
+            {% endtrans %}
+          </p>
+        {% endif %}
+      </div>
+    </header>
+    
+    <section class="search-form">
+      <form class="container" method="get" action="{% url_for controller='package', action='search' %}">
+        <h2 class="heading">{{ _("Search Our Data") }}</h2>
+        <div class="search-input control-group search-giant">
+          <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _("eg. Traffic") }}" />
+          <button type="submit">
+            <i class="icon-search"></i>
+            <span>{{ _('Search') }}</span>
+          </button>
+        </div>
+      </form>
+    </section>
+      
+    <div class="container">
+      <h2>{{ _('Browse Topics') }}</h2>
+      {# Show groups here #}
+      {% snippet "group/snippets/group_list.html", groups=h.get_featured_groups(count=12) %}
+    </div>
+    
+    <section class="twitter">
+      <div id="tweets" class="carousel container"></div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {% resource 'salford/js/home.js' %}
+  
+{% endblock %}
