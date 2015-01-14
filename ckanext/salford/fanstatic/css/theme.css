@@ -198,11 +198,14 @@ h6 {
 .masthead .site-search {
   display: none;
 }
+.ie7 .masthead {
+  background-color: #ffffff;
+}
 /* toolbar */
 .toolbar {
   background-color: #7d1a5a;
-  margin: 0 -9999rem;
-  padding: 15px 9999rem;
+  margin: 0 -9999px;
+  padding: 15px 9999px;
   color: #ffffff;
 }
 .toolbar .breadcrumb > li {
@@ -240,10 +243,10 @@ h6 {
 [role="main"] .wrapper .module-content.page-header {
   background-color: #f6f5f7;
   border-radius: 0;
-  margin-left: -9999rem;
-  padding-left: 9999rem;
-  margin-right: -9999rem;
-  padding-right: 9999rem;
+  margin-left: -9999px;
+  padding-left: 9999px;
+  margin-right: -9999px;
+  padding-right: 9999px;
 }
 [role="main"] .wrapper .module-content.page-header .content_action {
   margin-right: 0;
@@ -258,7 +261,7 @@ h6 {
 [role="main"] .wrapper .primary .module-content.page-header {
   margin-left: -26px;
   padding-left: 1px;
-  padding-right: 9999rem;
+  padding-right: 9999px;
 }
 [role="main"] .wrapper .secondary {
   padding-top: 20px;
@@ -394,6 +397,11 @@ h6 {
   display: inline-block;
   vertical-align: middle;
 }
+.ie .site-footer .attribution .ckan-footer-logo {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../../base/images/ckan-logo-footer.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/ckan-logo-footer.png', sizingMethod='scale')";
+}
 .site-footer .attribution .salford-footer-logo {
   background-image: url(../../../../base/images/salford-logo-footer.png);
   width: 161px;
@@ -401,6 +409,11 @@ h6 {
   display: inline-block;
   background-size: contain;
   vertical-align: middle;
+}
+.ie .site-footer .attribution .salford-footer-logo {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../../base/images/salford-logo-footer.png', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/salford-logo-footer.png', sizingMethod='scale')";
 }
 /* Home */
 .homepage h2 {

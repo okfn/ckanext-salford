@@ -235,14 +235,18 @@ h1, h2, h3, h4, h5, h6 {
   .site-search {
     display:none;
   }
+  
+  .ie7 & {
+    background-color:@white;
+  }
 }
 
 
 /* toolbar */
 .toolbar {
   background-color:@primary;
-  margin: 0 -9999rem;
-  padding: 15px 9999rem;
+  margin: 0 -9999px;
+  padding: 15px 9999px;
   color:@white;
   
   .breadcrumb > li {
@@ -293,10 +297,10 @@ h1, h2, h3, h4, h5, h6 {
       &.page-header {
         background-color: @light;
         border-radius: 0;
-        margin-left:-9999rem;
-        padding-left:9999rem;
-        margin-right:-9999rem;
-        padding-right:9999rem;
+        margin-left:-9999px;
+        padding-left:9999px;
+        margin-right:-9999px;
+        padding-right:9999px;
         
         .content_action {
           margin-right: 0;
@@ -314,7 +318,7 @@ h1, h2, h3, h4, h5, h6 {
         &.page-header {
           margin-left:-26px;
           padding-left:1px;
-          padding-right:9999rem;
+          padding-right:9999px;
         }
       }
     }
@@ -473,6 +477,12 @@ h1, h2, h3, h4, h5, h6 {
       background-size:contain;
       display:inline-block;
       vertical-align:middle;
+      
+      .ie & {
+        background-image:none;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/ckan-logo-footer.png', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/ckan-logo-footer.png', sizingMethod='scale')";
+      }
     }
     
     .salford-footer-logo {
@@ -482,6 +492,12 @@ h1, h2, h3, h4, h5, h6 {
       display:inline-block;
       background-size:contain;
       vertical-align:middle;
+      
+      .ie & {
+        background-image:none;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/salford-logo-footer.png', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader( src='../../../../base/images/salford-logo-footer.png', sizingMethod='scale')";
+      }
     }
   }
 }
