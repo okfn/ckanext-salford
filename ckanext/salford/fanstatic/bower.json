@@ -1,0 +1,19 @@
+{
+  "name": "fanstatic",
+  "version": "0.0.1",
+  "homepage": "https://github.com/okfn/ckanext-salford",
+  "authors": [
+    "Sam Smith"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "twitter-fetcher": "*"
+  }
+}
