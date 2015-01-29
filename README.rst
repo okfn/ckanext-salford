@@ -2,7 +2,7 @@
 ckanext-salford
 ===============
 
-CKAN extension for <https://www.salforddataquay.uk/>
+CKAN extension for https://www.salforddataquay.uk/
 
 
 ------------
