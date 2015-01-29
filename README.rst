@@ -23,11 +23,20 @@ To install ckanext-salford:
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
-4. Install the Bower components::
+4. Add the ``licenses_group_url`` setting to your CKAN config file.
+   For development use::
+
+     licenses_group_url = http://127.0.0.1:5000/licenses.json
+
+   For production use::
+
+     licenses_group_url = https://www.salforddataquay.uk/licenses.json
+
+5. Install the Bower components::
 
      cd /ckanext/salford/fanstatic
      bower install
 
-5. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
+6. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
 
      sudo service apache2 reload

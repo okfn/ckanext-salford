@@ -1,0 +1,269 @@
+[{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "License Not Specified",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "notspecified"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Open Data Commons Public Domain Dedication and License (PDDL)",
+    "domain_data": "True",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/odc-pddl",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "odc-pddl"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Open Data Commons Open Database License (ODbL)",
+    "domain_data": "True",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/odc-odbl",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "odc-odbl"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Open Data Commons Attribution License",
+    "domain_data": "True",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/odc-by",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "odc-by"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons CCZero",
+    "domain_data": "True",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/cc-zero",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "cc-zero"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons Attribution",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/cc-by",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "cc-by"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons Attribution Share-Alike",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/cc-by-sa",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "cc-by-sa"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "GNU Free Documentation License",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://www.opendefinition.org/licenses/gfdl",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "gfdl"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Open)",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "other-open"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Public Domain)",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "other-pd"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Attribution)",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "other-at"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "UK Open Government Licence (OGL)",
+    "domain_data": "False",
+    "is_okd_compliant": "True",
+    "is_generic": "False",
+    "url": "http://reference.data.gov.uk/id/open-government-licence",
+    "is_osi_compliant": "False",
+    "domain_content": "True",
+    "domain_software": "False",
+    "id": "uk-ogl"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Creative Commons Non-Commercial (Any)",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "False",
+    "url": "http://creativecommons.org/licenses/by-nc/2.0/",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "cc-nc"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Non-Commercial)",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "other-nc"
+
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Public Sector End User Licence - INSPIRE",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "True",
+    "url": "http://www.ordnancesurvey.co.uk/business-and-government/public-sector/mapping-agreements/inspire-licence.html",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "pseuli"
+},
+{
+
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Open Government Licence",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "True",
+    "url": "http://www.nationalarchives.gov.uk/doc/open-government-licence",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "ogl"
+
+},
+{
+    "status": "active",
+    "maintainer": "",
+    "family": "",
+    "title": "Other (Not Open)",
+    "domain_data": "False",
+    "is_okd_compliant": "False",
+    "is_generic": "True",
+    "url": "",
+    "is_osi_compliant": "False",
+    "domain_content": "False",
+    "domain_software": "False",
+    "id": "other-closed"
+}]
