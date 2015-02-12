@@ -1,0 +1,49 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Publication Scheme') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Publication Scheme'), controller='ckanext.salford.plugin:SalfordController', action='publication_scheme' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+      <p>Under the Freedom of Information Act, the council is required to have
+      a publication scheme that sets out our commitment to routinely make
+      available certain classes of information.</p>
+
+      <p>This page provides access to those datasets and information that are
+      proactively published in electronic format (and where possible licensed
+      for re-use) as part of Salford City Council's Publication Scheme.</p>
+
+      <p>The council has adopted the Information Commissioner’s Model
+      Publication Scheme which categorises information into the following
+      classes:</p>
+
+      {% for information_class in h.information_classes() %}
+        <h2>{{ information_class }}</h2>
+          {% snippet "snippets/package_list.html", packages=h.datasets_for_information_class(information_class) %}
+      {% endfor %}
+
+      <p>If you cannot find what you are looking for you can make a request for
+      the information under the provisions of the Freedom of Information
+      Act.</p>
+
+      <p>For further information concerning the Scheme please contact:</p>
+
+      <p>Corporate Information Officer<br>
+      Salford City Council<br>
+      Civic Centre<br>
+      Chorley Road<br>
+      Swinton<br>
+      SALFORD<br>
+      M27 5DA</p>
+
+      <p>Telephone: 0161 793 2407<br>
+      Email teresa.webb@salford.gov.uk</p>
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
