@@ -22,7 +22,7 @@
       classes:</p>
 
       {% for information_class in h.information_classes() %}
-        <h2>{{ information_class }}</h2>
+        <h1>{{ information_class }}</h1>
           {% snippet "snippets/package_list.html", packages=h.datasets_for_information_class(information_class) %}
       {% endfor %}
 
