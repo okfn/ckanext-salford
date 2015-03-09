@@ -42,6 +42,17 @@ To install ckanext-salford:
      sudo service apache2 reload
 
 
+-------------
+Configuration
+-------------
+
+Add the following configuration options to the ini file::
+
+
+    ckan.i18n_directory = /usr/lib/ckan/default/src/ckanext-salford/src/ckanext-salford/
+    ckan.locale_default = en_GB
+    ckan.locales_filtered_out = en
+
 -----------------------------------
 Importing Datasets from data.gov.uk
 -----------------------------------
