@@ -1,6 +1,9 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
+from ckanext.esdstandards.validators import (esd_function_validator,
+                                             esd_service_validator)
+
 
 def information_classes():
     """Return the set of available "information classes" for datasets.
@@ -27,6 +30,8 @@ def datasets_for_information_class(information_class):
     return datasets
 
 
+
+
 class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
@@ -45,9 +50,16 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     # IDatasetForm
 
     def _modify_package_schema(self, schema):
+        default_validators = [toolkit.get_validator('ignore_missing'),
+                              toolkit.get_converter('convert_to_extras')]
         schema.update({
-            'information_class': [toolkit.get_validator('ignore_missing'),
-                                  toolkit.get_converter('convert_to_extras')]
+            'information_class': default_validators,
+            'la_function': [toolkit.get_validator('ignore_missing'),
+                            esd_function_validator,
+                            toolkit.get_converter('convert_to_extras')],
+            'la_service': [toolkit.get_validator('ignore_missing'),
+                           esd_service_validator,
+                           toolkit.get_converter('convert_to_extras')],
         })
         return schema
 
@@ -63,9 +75,13 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def show_package_schema(self):
         schema = super(SalfordPlugin, self).show_package_schema()
+        default_validators = [toolkit.get_converter('convert_from_extras'),
+                              toolkit.get_validator('ignore_missing')]
+
         schema.update({
-            'information_class': [toolkit.get_converter('convert_from_extras'),
-                                  toolkit.get_validator('ignore_missing')]
+            'information_class': default_validators,
+            'la_function': default_validators,
+            'la_service': default_validators,
         })
         return schema
 

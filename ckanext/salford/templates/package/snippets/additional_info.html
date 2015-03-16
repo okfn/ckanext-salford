@@ -7,4 +7,10 @@
       <td class="dataset-details">{{ pkg_dict.information_class }}</td>
     </tr>
   {% endif %}
+
+  {% snippet 'snippets/esd_functions_additional_info.html', data=pkg_dict %}
+
+  {% snippet 'snippets/esd_services_additional_info.html', data=pkg_dict %}
+
+
 {% endblock %}

@@ -12,4 +12,9 @@
       </select>
     </div>
   </div>
+
+  {% snippet 'snippets/esd_functions.html', data=data, errors=errors %}
+
+  {% snippet 'snippets/esd_services.html', data=data, errors=errors %}
+
 {% endblock %}
