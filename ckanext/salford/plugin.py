@@ -3,6 +3,8 @@ import ckan.plugins.toolkit as toolkit
 
 from ckanext.esdstandards.validators import (esd_function_validator,
                                              esd_service_validator)
+from ckanext.esdstandards.helpers import (get_esd_function_titles,
+                                          get_esd_service_titles)
 
 
 def information_classes():
@@ -35,6 +37,8 @@ def datasets_for_information_class(information_class):
 class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
+    plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IRoutes)
     plugins.implements(plugins.ITemplateHelpers)
 
@@ -91,6 +95,32 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def package_types(self):
         return []
 
+    # IPackageController
+
+    def before_index(self, dataset_dict):
+
+        if dataset_dict.get('la_function'):
+            dataset_dict['vocab_la_function'] = get_esd_function_titles(
+                dataset_dict['la_function']).split(', ')
+        if dataset_dict.get('la_service'):
+            dataset_dict['vocab_la_service'] = get_esd_service_titles(
+                dataset_dict['la_service']).split(', ')
+
+        return dataset_dict
+
+    # IFacets
+
+    def dataset_facets(self, facets_dict, package_type):
+        _update_facets(facets_dict)
+        return facets_dict
+
+    def group_facets(self, facets_dict, group_type, package_type):
+        _update_facets(facets_dict)
+        return facets_dict
+
+    def organization_facets(self, facets_dict, organization_type, package_type):
+        _update_facets(facets_dict)
+        return facets_dict
 
     # IRoutes
 
@@ -104,7 +134,6 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def after_map(self, map_):
         return map_
 
-
     # ITemplateHelpers
 
     def get_helpers(self):
@@ -112,6 +141,14 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "information_classes": information_classes,
             "datasets_for_information_class": datasets_for_information_class,
             }
+
+
+def _update_facets(facets_dict):
+
+    facets_dict.update({
+        'vocab_la_function': toolkit._('ESD Functions'),
+        'vocab_la_service': toolkit._('ESD Services'),
+    })
 
 
 class SalfordController(toolkit.BaseController):
