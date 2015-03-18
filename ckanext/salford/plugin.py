@@ -58,6 +58,11 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                               toolkit.get_converter('convert_to_extras')]
         schema.update({
             'information_class': default_validators,
+            'temporal_coverage-from': default_validators,
+            'temporal_coverage-to': default_validators,
+            'mandate': default_validators,
+            'unpublished': default_validators,
+            'update_frequency': default_validators,
             'la_function': [toolkit.get_validator('ignore_missing'),
                             esd_function_validator,
                             toolkit.get_converter('convert_to_extras')],
@@ -85,6 +90,11 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
         schema.update({
             'information_class': default_validators,
+            'temporal_coverage-from': default_validators,
+            'temporal_coverage-to': default_validators,
+            'mandate': default_validators,
+            'unpublished': default_validators,
+            'update_frequency': default_validators,
             'la_function': default_validators,
             'la_service': default_validators,
         })

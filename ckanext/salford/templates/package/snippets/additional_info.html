@@ -8,9 +8,35 @@
     </tr>
   {% endif %}
 
-  {% snippet 'snippets/esd_functions_additional_info.html', data=pkg_dict %}
+  {% snippet 'snippets/esd_functions_additional_info.html', data=pkg_dict, display_row_if_missing=False  %}
 
-  {% snippet 'snippets/esd_services_additional_info.html', data=pkg_dict %}
+  {% snippet 'snippets/esd_services_additional_info.html', data=pkg_dict, display_row_if_missing=False %}
+
+  {% if pkg_dict.mandate %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Mandate") }}</th>
+      <td class="dataset-details">{{ pkg_dict.mandate }}</td>
+    </tr>
+  {% endif %}
+
+  {% if pkg_dict.update_frequency %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Update Frequency") }}</th>
+      <td class="dataset-details">{{ pkg_dict.update_frequency }}</td>
+    </tr>
+  {% endif %}
+
+  {% if pkg_dict['temporal_coverage-from'] or pkg_dict['temporal_coverage-to'] %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Temporal Coverage") }}</th>
+      <td class="dataset-details">
+          {{ pkg_dict['temporal_coverage-from'] }}
+          {% if pkg_dict['temporal_coverage-from'] and pkg_dict['temporal_coverage-to'] %} to {% endif %}
+          {{ pkg_dict['temporal_coverage-to'] }}
+      </td>
+    </tr>
+  {% endif %}
+
 
 
 {% endblock %}

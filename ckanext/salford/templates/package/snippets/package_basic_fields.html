@@ -1,20 +1,4 @@
 {% ckan_extends %}
 
 {% block package_basic_fields_custom %}
-  <div class="control-group">
-    <label class="control-label" for="field-information_class">{{ _("Information Class") }}</label>
-    <div class="controls">
-      <select id="field-information_class" name="information_class" data-module="autocomplete">
-        <option value="" {% if data.get('information_class') == "" %}selected="selected"{% endif %}>None</option>
-        {% for information_class in h.information_classes() %}
-          <option value="{{ information_class }}" {% if information_class in data.get('information_class', []) %}selected="selected"{% endif %}>{{ information_class }}</option>
-        {% endfor %}
-      </select>
-    </div>
-  </div>
-
-  {% snippet 'snippets/esd_functions.html', data=data, errors=errors %}
-
-  {% snippet 'snippets/esd_services.html', data=data, errors=errors %}
-
 {% endblock %}

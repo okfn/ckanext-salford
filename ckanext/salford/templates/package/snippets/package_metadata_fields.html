@@ -1,4 +1,38 @@
 {% ckan_extends %}
 
+{% block package_metadata_fields %}
+  <div class="control-group">
+    <label class="control-label" for="field-information_class">{{ _("Information Class") }}</label>
+    <div class="controls">
+      <select id="field-information_class" name="information_class" data-module="autocomplete">
+        <option value="" {% if data.get('information_class') == "" %}selected="selected"{% endif %}>None</option>
+        {% for information_class in h.information_classes() %}
+          <option value="{{ information_class }}" {% if information_class in data.get('information_class', []) %}selected="selected"{% endif %}>{{ information_class }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  {% snippet 'snippets/esd_functions.html', data=data, errors=errors %}
+
+  {% snippet 'snippets/esd_services.html', data=data, errors=errors %}
+
+  {{ form.input('mandate', label=_('Mandate'), id='field-mandate', placeholder=_('eg http://www.legislation.gov.uk/ukpga/201
+  4/26/section/168/enacted'), value=data.mandate, error=errors.mandate, classes=['control-medium']) }}
+
+  {{ form.input('update_frequency', label=_('Update Frequency'), id='field-update_frequency', placeholder=_('eg never, annual, monthly, ... '), value=data.update_frequency, error=errors.update_frequency, classes=['control-medium']) }}
+
+  <div class="control-group">
+    <label class="control-label" for="field-information_class">{{ _("Temporal Coverage") }}</label>
+    <div class="controls">
+        <input id="field-temporal_coverage-from" type="text" name="temporal_coverage-from" value="" placeholder="YYYY-MM-DD, YYYY-MM or YYYY"  /> -
+        <input id="field-temporal_coverage-to" type="text" name="temporal_coverage-to" value="" placeholder="YYYY-MM-DD, YYYY-MM or YYYY"  />
+    </div>
+  </div>
+
+  {{ super() }}
+
+{% endblock %}
+
 {% block custom_fields %}
 {% endblock %}
