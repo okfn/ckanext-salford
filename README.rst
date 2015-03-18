@@ -19,11 +19,15 @@ To install ckanext-salford:
 
      pip install ckanext-salford
 
-3. Add ``salford`` to the ``ckan.plugins`` setting in your CKAN
+3. Install the ckanext-esdstandards Python package into your virtual environment::
+
+     pip install ckanext-esdstandards
+
+4. Add ``salford`` and ``esd`` to the ``ckan.plugins`` setting in your CKAN
    config file (by default the config file is located at
    ``/etc/ckan/default/production.ini``).
 
-4. Add the ``licenses_group_url`` setting to your CKAN config file.
+5. Add the ``licenses_group_url`` setting to your CKAN config file.
    For development use::
 
      licenses_group_url = http://127.0.0.1:5000/licenses.json
@@ -32,12 +36,12 @@ To install ckanext-salford:
 
      licenses_group_url = https://www.salforddataquay.uk/licenses.json
 
-5. Install the Bower components::
+6. Install the Bower components::
 
      cd /ckanext/salford/fanstatic
      bower install
 
-6. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
+7. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu::
 
      sudo service apache2 reload
 
@@ -64,3 +68,6 @@ into a development or production CKAN instance. Usage::
   pip install ckanapi
   ./etl.py -u 'http://127.0.0.1:5000' -a <your_api_key>
   ./etl.py -u 'https://www.salforddataquay.uk/' -a <your_api_key>
+
+Note that only non-UKLP datasets are imported for now, ie INSPIRE datasets on data.gov.uk
+are not imported.
