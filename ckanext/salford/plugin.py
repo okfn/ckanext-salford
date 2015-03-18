@@ -70,7 +70,7 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def create_package_schema(self):
         schema = super(SalfordPlugin, self).create_package_schema()
         schema = self._modify_package_schema(schema)
-        schema['id'] = [unicode]
+        schema['id'] = [toolkit.get_validator('ignore_missing'), unicode]
         return schema
 
     def update_package_schema(self):
