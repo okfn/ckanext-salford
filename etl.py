@@ -54,12 +54,29 @@ def data_gov_uk_transform(dataset, url, apikey):
         "maintainer", "maintainer_email", "metadata_created",
         "metadata_modified", "author", "author_email", "version",
         "name", "isopen", "url", "notes", "title",
-#        "id", # We need to make sure that ids are the same so harvesting works
+        # We need to make sure that ids are the same so harvesting works
+        "id",
+        # DGU fields
+        "la_function",
+        "la_service",
+        "temporal_coverage-from",
+        "temporal_coverage-to",
+        "mandate",
+        "update_frequency",
+        "unpublished",
     ]
 
     for key in dataset:
         if key in whitelist:
             transformed_dataset[key] = dataset[key]
+
+    if transformed_dataset.get('mandate'):
+        if (isinstance(transformed_dataset['mandate'], list) and
+                len(transformed_dataset['mandate'])):
+            if transformed_dataset['mandate'][0]:
+                transformed_dataset['mandate'] = transformed_dataset['mandate'][0]
+            else:
+                del transformed_dataset['mandate']
 
     transformed_dataset["resources"] = []
     resource_whitelist = ["created", "description", "format", "name",
@@ -112,7 +129,8 @@ def _create_dataset(dataset, client):
     try:
         return client.action.package_create(**dataset)
     except ckanapi.errors.ValidationError as err:
-        if 'name' in err.error_dict and err.error_dict['name'] == ['That URL is already in use.']:
+        if ('name' in err.error_dict
+                and err.error_dict['name'] == ['That URL is already in use.']):
             return client.action.package_show(id=dataset['name'])
         else:
             raise
