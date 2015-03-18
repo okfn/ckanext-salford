@@ -126,7 +126,7 @@ def load(datasets, url, apikey):
         _create_dataset(dataset, salford)
 
 
-def datagovuk_extract():
+def datagovuk_extract(import_uklp_datasets=False):
     """Extract the datasets from data.gov.uk.
 
     Return the cached datasets from the pickle file if it exists.
@@ -145,7 +145,10 @@ def datagovuk_extract():
             id='salford-city-council')
         for package in response["packages"]:
             full_package_dict = datagovuk.action.package_show(id=package["id"])
-            datasets.append(full_package_dict)
+            if import_uklp_datasets:
+                datasets.append(full_package_dict)
+            elif not get_extra(full_package_dict, 'UKLP'):
+                datasets.append(full_package_dict)
             time.sleep(1)
         with open(pickle_filename, "w") as pickle_file:
             pickle.dump(datasets, pickle_file)
@@ -157,6 +160,9 @@ def cli():
     parser = argparse.ArgumentParser()
     parser.add_argument("-u", "--url",
                         default='https://www.salforddataquay.uk/')
+    parser.add_argument("-l", "--import-uklp",
+                        default=False)
+
     parser.add_argument("-a", "--apikey", required=True)
     return parser.parse_args()
 
@@ -166,7 +172,8 @@ def main():
     args = cli()
     url = args.url
     apikey = args.apikey
-    datasets = datagovuk_extract()
+    import_uklp_datasets = args.import_uklp
+    datasets = datagovuk_extract(import_uklp_datasets)
     datasets = [data_gov_uk_transform(dataset, url, apikey)
                 for dataset in datasets]
     load(datasets, apikey=apikey, url=url)
