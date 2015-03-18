@@ -54,6 +54,7 @@ def data_gov_uk_transform(dataset, url, apikey):
         "maintainer", "maintainer_email", "metadata_created",
         "metadata_modified", "author", "author_email", "version",
         "name", "isopen", "url", "notes", "title",
+#        "id", # We need to make sure that ids are the same so harvesting works
     ]
 
     for key in dataset:
@@ -111,7 +112,7 @@ def _create_dataset(dataset, client):
     try:
         return client.action.package_create(**dataset)
     except ckanapi.errors.ValidationError as err:
-        if err.error_dict['name'] == ['That URL is already in use.']:
+        if 'name' in err.error_dict and err.error_dict['name'] == ['That URL is already in use.']:
             return client.action.package_show(id=dataset['name'])
         else:
             raise
