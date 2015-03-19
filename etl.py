@@ -53,7 +53,7 @@ def data_gov_uk_transform(dataset, url, apikey):
     whitelist = [
         "maintainer", "maintainer_email", "metadata_created",
         "metadata_modified", "author", "author_email", "version",
-        "name", "isopen", "url", "notes", "title",
+        "name", "isopen", "url", "notes", "title", "tags",
         # We need to make sure that ids are the same so harvesting works
         "id",
         # DGU fields
@@ -80,7 +80,7 @@ def data_gov_uk_transform(dataset, url, apikey):
 
     transformed_dataset["resources"] = []
     resource_whitelist = ["created", "description", "format", "name",
-                          "position", "url"]
+                          "position", "url", "id"]
     for resource in dataset["resources"]:
         new_resource = {key: value for key, value in resource.items()
                         if key in resource_whitelist}
