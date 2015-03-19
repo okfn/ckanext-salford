@@ -6,6 +6,8 @@ from ckanext.esdstandards.validators import (esd_function_validator,
 from ckanext.esdstandards.helpers import (get_esd_function_titles,
                                           get_esd_service_titles)
 
+from ckanext.spatial.interfaces import ISpatialHarvester
+
 
 def information_classes():
     """Return the set of available "information classes" for datasets.
@@ -41,6 +43,7 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IRoutes)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(ISpatialHarvester, inherit=True)
 
 
     # IConfigurer
@@ -106,24 +109,18 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def package_types(self):
         return []
 
+    # ISpatialHarvester
+
+    def get_package_dict(self, context, data_dict):
+
+        package_dict = data_dict['package_dict']
+
+        package_dict['extras'].append({'key': 'dgu_harvest_me',
+                                       'value': False})
+
+        return package_dict
+
     # IPackageController
-
-    def after_create(self, context, dataset_dict):
-        def _get_extra(dataset_dict, key):
-            for extra in dataset_dict.get('extras', []):
-                if extra['key'] == key:
-                    return extra['value']
-            return None
-
-        if (dataset_dict.get('spatial_harvester') or
-                _get_extra(dataset_dict, 'spatial_harvester')):
-            if not dataset_dict.get('extras'):
-                dataset_dict['extras'] = []
-
-            dataset_dict['extras'].append({'key': 'dgu_harvest_me',
-                                           'value': False})
-
-        return dataset_dict
 
     def before_index(self, dataset_dict):
 
