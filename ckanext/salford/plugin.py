@@ -108,6 +108,23 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     # IPackageController
 
+    def after_create(self, context, dataset_dict):
+        def _get_extra(dataset_dict, key):
+            for extra in dataset_dict.get('extras', []):
+                if extra['key'] == key:
+                    return extra['value']
+            return None
+
+        if (dataset_dict.get('spatial_harvester') or
+                _get_extra(dataset_dict, 'spatial_harvester')):
+            if not dataset_dict.get('extras'):
+                dataset_dict['extras'] = []
+
+            dataset_dict['extras'].append({'key': 'dgu_harvest_me',
+                                           'value': False})
+
+        return dataset_dict
+
     def before_index(self, dataset_dict):
 
         if dataset_dict.get('la_function'):
