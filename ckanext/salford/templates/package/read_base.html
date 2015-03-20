@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block content_action %}
+  {% if h.check_access('package_update', {'id':pkg.id }) and not h.is_spatial_dataset(pkg) %}
+    {% link_for _('Manage'), controller='package', action='edit', id=pkg.name, class_='btn', icon='wrench' %}
+  {% endif %}
+{% endblock %}
+

@@ -34,6 +34,23 @@ def datasets_for_information_class(information_class):
     return datasets
 
 
+def is_spatial_dataset(dataset_dict):
+
+    for extra in dataset_dict.get('extras', []):
+        if extra['key'] == 'spatial_harvester':
+            return True
+    return False
+
+
+@toolkit.auth_sysadmins_check
+def custom_package_update_auth(context, data_dict):
+    if (data_dict and is_spatial_dataset(data_dict) or
+            (context.get('package') and
+             context['package'].extras.get('spatial_harvester'))):
+        return {'success': False,
+                'msg': 'You can not edit harvested datasets on this site'}
+    from ckan.logic.auth.update import package_update as package_update_core
+    return package_update_core(context, data_dict)
 
 
 class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -43,6 +60,7 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IRoutes)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IAuthFunctions)
     plugins.implements(ISpatialHarvester, inherit=True)
 
 
@@ -163,9 +181,16 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def get_helpers(self):
         return {
-            "information_classes": information_classes,
-            "datasets_for_information_class": datasets_for_information_class,
+            'information_classes': information_classes,
+            'datasets_for_information_class': datasets_for_information_class,
+            'is_spatial_dataset': is_spatial_dataset,
             }
+
+    # IAuthFunctions
+
+    def get_auth_functions(self):
+
+        return {'package_update': custom_package_update_auth}
 
 
 def _update_facets(facets_dict):
