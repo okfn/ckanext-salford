@@ -1,6 +1,16 @@
 {% ckan_extends %}
 
 {% block extras %}
+
+  <tr>
+    <th scope="row" class="dataset-label">{{ _("Metadata Created") }}</th>
+    <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</td>
+  </tr>
+  <tr>
+    <th scope="row" class="dataset-label">{{ _("Metadata Updated") }}</th>
+    <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_modified, with_hours=True) }}</td>
+  </tr>
+
   {% if pkg_dict.information_class %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Information Class") }}</th>
@@ -19,20 +29,62 @@
     </tr>
   {% endif %}
 
-  {% if pkg_dict.update_frequency %}
+  {% if pkg_dict.update_frequency or h.get_pkg_dict_extra(pkg_dict, 'frequency-of-update') %}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Update Frequency") }}</th>
-      <td class="dataset-details">{{ pkg_dict.update_frequency }}</td>
+      <td class="dataset-details">{{ pkg_dict.update_frequency or h.get_pkg_dict_extra(pkg_dict, 'frequency-of-update') }}</td>
     </tr>
   {% endif %}
 
-  {% if pkg_dict['temporal_coverage-from'] or pkg_dict['temporal_coverage-to'] %}
+  {% if pkg_dict.update_frequency or h.get_pkg_dict_extra(pkg_dict, 'bbox-east-long') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Extent") }}<br/> (East, South, West, North)</th>
+      <td class="dataset-details">
+          {{ h.get_pkg_dict_extra(pkg_dict, 'bbox-east-long') }},
+          {{ h.get_pkg_dict_extra(pkg_dict, 'bbox-north-lat') }},
+          {{ h.get_pkg_dict_extra(pkg_dict, 'bbox-south-lat') }},
+          {{ h.get_pkg_dict_extra(pkg_dict, 'bbox-west-long') }},
+      </td>
+    </tr>
+  {% endif %}
+
+  {% if h.get_pkg_dict_extra(pkg_dict, 'spatial-reference-system') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Spatial Reference System") }}</th>
+      <td class="dataset-details">{{ h.get_pkg_dict_extra(pkg_dict, 'spatial-reference-system') }}</td>
+    </tr>
+  {% endif %}
+
+
+  {% if h.get_pkg_dict_extra(pkg_dict, 'dataset-reference-date') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Dataset Reference Dates") }}</th>
+      <td class="dataset-details">{{ h.get_reference_date(h.get_pkg_dict_extra(pkg_dict, 'dataset-reference-date')) }}</td>
+    </tr>
+  {% endif %}
+
+  {% if h.get_pkg_dict_extra(pkg_dict, 'responsible-party') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Responsible Party") }}</th>
+      <td class="dataset-details">{{ h.get_responsible_party(h.get_pkg_dict_extra(pkg_dict, 'responsible-party')) }}</td>
+    </tr>
+  {% endif %}
+
+  {% if h.get_pkg_dict_extra(pkg_dict, 'metadata-language') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("Metadata Language") }}</th>
+      <td class="dataset-details">{{ h.get_pkg_dict_extra(pkg_dict, 'metadata-language', '').replace('eng', 'English') }}</td>
+    </tr>
+  {% endif %}
+
+  {% if pkg_dict['temporal_coverage-from'] or pkg_dict['temporal_coverage-to']
+     or h.get_pkg_dict_extra(pkg_dict, 'temporal-extent-begin') or h.get_pkg_dict_extra(pkg_dict, 'temporal-extent-end')%}
     <tr>
       <th scope="row" class="dataset-label">{{ _("Temporal Coverage") }}</th>
       <td class="dataset-details">
-          {{ pkg_dict['temporal_coverage-from'] }}
+          {{ pkg_dict['temporal_coverage-from'] or h.get_pkg_dict_extra(pkg_dict, 'temporal-extent-begin') }}
           {% if pkg_dict['temporal_coverage-from'] and pkg_dict['temporal_coverage-to'] %} to {% endif %}
-          {{ pkg_dict['temporal_coverage-to'] }}
+          {{ pkg_dict['temporal_coverage-to'] or h.get_pkg_dict_extra(pkg_dict, 'temporal-extent-end')}}
       </td>
     </tr>
   {% endif %}
