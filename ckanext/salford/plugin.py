@@ -132,6 +132,23 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def get_package_dict(self, context, data_dict):
 
         package_dict = data_dict['package_dict']
+        if package_dict.get('name'):
+            try:
+                current_dataset_dict = toolkit.get_action('package_show')(
+                    {}, {'id': package_dict['name']})
+
+                keys_to_keep = ['groups']
+
+                # This will only work on 2.3
+                # keys_to_keep_as_extras = ['la_function', 'la_service',
+                #    'information_class', 'mandate']
+
+                for key in keys_to_keep:
+                    if current_dataset_dict.get(key):
+                        package_dict[key] = current_dataset_dict[key]
+
+            except toolkit.ObjectNotFound:
+                pass
 
         package_dict['extras'].append({'key': 'dgu_harvest_me',
                                        'value': False})
