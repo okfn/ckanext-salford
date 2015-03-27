@@ -1,3 +1,5 @@
+import json
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
@@ -40,6 +42,13 @@ def is_spatial_dataset(dataset_dict):
         if extra['key'] == 'spatial_harvester':
             return True
     return False
+
+
+def render_json_list(value):
+    try:
+        return ', '.join(json.loads(value))
+    except ValueError:
+        return value
 
 
 @toolkit.auth_sysadmins_check
@@ -201,6 +210,7 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             'information_classes': information_classes,
             'datasets_for_information_class': datasets_for_information_class,
             'is_spatial_dataset': is_spatial_dataset,
+            'render_json_list': render_json_list,
             }
 
     # IAuthFunctions

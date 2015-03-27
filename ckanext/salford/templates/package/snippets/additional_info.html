@@ -2,6 +2,13 @@
 
 {% block extras %}
 
+  {% if h.get_pkg_dict_extra(pkg_dict, 'access_constraints') %}
+    <tr>
+      <th scope="row" class="dataset-label">{{ _("License") }}</th>
+      <td class="dataset-details">{{ h.render_json_list(h.get_pkg_dict_extra(pkg_dict, 'access_constraints')) or '-' }}</td>
+    </tr>
+  {% endif %}
+
   <tr>
     <th scope="row" class="dataset-label">{{ _("Metadata Created") }}</th>
     <td class="dataset-details">{{ h.render_datetime(pkg_dict.metadata_created, with_hours=True) }}</td>
