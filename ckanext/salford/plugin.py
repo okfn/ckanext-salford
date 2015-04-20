@@ -72,14 +72,12 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IAuthFunctions)
     plugins.implements(ISpatialHarvester, inherit=True)
 
-
     # IConfigurer
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
         toolkit.add_resource('fanstatic', 'salford')
-
 
     # IDatasetForm
 
@@ -187,7 +185,8 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         _update_facets(facets_dict)
         return facets_dict
 
-    def organization_facets(self, facets_dict, organization_type, package_type):
+    def organization_facets(self, facets_dict, organization_type,
+                            package_type):
         _update_facets(facets_dict)
         return facets_dict
 
