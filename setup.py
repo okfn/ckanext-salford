@@ -16,7 +16,7 @@ setup(
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.0.2',
 
-    description='''''',
+    description='''CKAN extension for https://www.salforddataquay.uk''',
     long_description=long_description,
 
     # The project's main homepage.
