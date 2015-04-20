@@ -157,6 +157,13 @@ class SalfordPlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             except toolkit.ObjectNotFound:
                 pass
 
+        # Check if any of the resources is a CSV download from GeoServer
+        for resource in package_dict.get('resources'):
+            if resource.get('url'):
+                if all(x in resource['url'].lower()
+                        for x in ('service=wfs', 'outputformat=csv')):
+                    resource['format'] = 'CSV'
+
         package_dict['extras'].append({'key': 'dgu_harvest_me',
                                        'value': False})
 
